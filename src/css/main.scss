@@ -1,0 +1,1266 @@
+/*===================
+========= Переменные и миксины ===========*/
+
+@import 'variables';
+@import 'mixins';
+
+/*===================
+========= Спецификация ===========*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: $background;
+  background-repeat: no-repeat;
+  min-height: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: $mainFont;
+  color: $mainColor;
+}
+
+input,
+textarea,
+button,
+a {
+  outline: none;
+  border: none;
+}
+
+p {
+  margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
+}
+
+ul {
+  list-style: none;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  font-family: $mainFont;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1156px;
+  margin: 0 auto;
+}
+
+.btn {
+  padding: 10px 0;
+  box-shadow: 0px 7px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  border: none;
+  display: block;
+  background: $bgButton;
+  width: 240px;
+  padding: 10px 26px;
+  font-size: 20px;
+  color: inherit;
+  margin: 0 auto 13px;
+  transition: transform 0.2s linear, box-shadow 0.2s linear, background 0.2s linear;
+
+  &:hover {
+    background: darken($bgButton, 5%);
+    transform: translateY(7px);
+    box-shadow: none;
+  }
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  @include getCenter();
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/*===================
+========= Стили для прокрутки ===========*/
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: #6a7fee;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $anotherColor;
+  cursor: default;
+  width: 15px;
+  border: 3px solid #6a7fee;
+  border-radius: 10px;
+}
+
+/*===================
+========= Регистрация и авторизация ===========*/
+
+.form {
+  height: 100vh;
+  @include getCenter();
+
+  &__inner {
+    width: 520px;
+    height: 610px;
+    background: $anotherColor;
+    border-radius: 30px;
+    padding: 23px 0;
+    @include getCenter();
+    flex-direction: column;
+  }
+
+  &__data {
+    @include getCenter();
+    flex-direction: column;
+    width: 265px;
+  }
+
+  &__input {
+    width: 240px;
+    padding: 13px 15px;
+    display: block;
+    border-radius: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+
+    &::placeholder {
+      color: #c0c0c0;
+      font-family: $mainFont;
+    }
+  }
+
+  &__link {
+    font-size: 13px;
+
+    & a {
+      color: $bgButton;
+    }
+  }
+}
+
+/*===================
+========= Анимация (задний фон) ===========*/
+
+.animation-bg {
+  position: absolute;
+  z-index: -4;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.animation-bg__item {
+  position: absolute;
+  display: block;
+  width: 13px;
+  height: 13px;
+  list-style: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  bottom: -100px;
+  animation: bgAnimate 20s linear infinite;
+}
+
+.animation-bg__item:nth-child(1) {
+  left: 86%;
+  animation-delay: 0s;
+}
+
+.animation-bg__item:nth-child(2) {
+  left: 48%;
+  animation-delay: 1.2s;
+  animation-duration: 7s;
+}
+
+.animation-bg__item:nth-child(3) {
+  left: 72%;
+  animation-delay: 2s;
+  animation-duration: 13s;
+}
+
+.animation-bg__item:nth-child(4) {
+  left: 55%;
+  animation-delay: 1s;
+  animation-duration: 15s;
+}
+
+.animation-bg__item:nth-child(5) {
+  left: 40%;
+  animation-delay: 0.9s;
+}
+
+.animation-bg__item:nth-child(6) {
+  left: 15%;
+  animation-delay: 2s;
+  animation-duration: 16s;
+}
+
+.animation-bg__item:nth-child(7) {
+  left: 32%;
+  animation-delay: 1.5s;
+  animation-duration: 8s;
+}
+
+.animation-bg__item:nth-child(7) {
+  left: 95%;
+  animation-delay: 1.7s;
+}
+
+.animation-bg__item:nth-child(8) {
+  left: 62%;
+  animation-delay: 1.3s;
+}
+
+.animation-bg__item:nth-child(9) {
+  left: 25%;
+  animation-delay: 1.3s;
+  animation-duration: 11s;
+}
+
+.animation-bg__item:nth-child(10) {
+  left: 8%;
+  animation-delay: 1.7s;
+}
+
+@keyframes bgAnimate {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-800px);
+    opacity: 0;
+  }
+}
+
+/*===================
+========= Логотип ===========*/
+
+.logo {
+  margin-bottom: 25px;
+  position: relative;
+
+  &:hover .rainbow__item {
+    transform: rotate(135deg);
+  }
+
+  &:hover &__patch:before,
+  &:hover &__patch:after {
+    opacity: 1;
+  }
+
+  &:hover &__patch:after {
+    transition-delay: 0.8s;
+  }
+
+  &:hover &__patch:before {
+    transition-delay: 1s;
+  }
+
+  &__horn {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    display: block;
+    top: -3px;
+
+    &_left {
+      left: -12px;
+    }
+
+    &_right {
+      left: 56px;
+    }
+
+    &_center {
+      top: -18px;
+      left: calc(50% - 8px);
+    }
+  }
+
+  &__head {
+    width: 87px;
+    height: 87px;
+    position: relative;
+    z-index: 2;
+    border: 4px solid #fff;
+    @include getCenter;
+    border-radius: 50%;
+    background: #7a6ed7;
+  }
+
+  &__eye {
+    box-shadow: 0px 5.2px 5.2px 2.6px rgba(109, 2, 2, 0.25);
+    width: 36px;
+    height: 34px;
+    border-radius: 50%;
+    background: #fff;
+    @include getCenter;
+  }
+
+  &__eyeball {
+    position: relative;
+    width: 18px;
+    height: 15px;
+    background: #000;
+    border-radius: 50%;
+  }
+
+  &__patch {
+    display: block;
+    border-radius: 50%;
+    background: #fff;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    right: -2px;
+    top: 30%;
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      background: #fff;
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s linear;
+    }
+
+    &:before {
+      width: 9px;
+      height: 9px;
+      top: -1px;
+      left: -14px;
+      transition-delay: 0.8s;
+    }
+
+    &:after {
+      width: 2px;
+      height: 2px;
+      top: -2px;
+      left: -4px;
+      transition-delay: 1s;
+    }
+  }
+}
+
+/*===================
+========= Радуга ===========*/
+
+.rainbow {
+  width: 280px;
+  height: 130px;
+  position: absolute;
+  top: -52px;
+  left: -97px;
+  overflow: hidden;
+}
+
+.rainbow__item {
+  position: absolute;
+  border-top-color: transparent !important;
+  border-right-color: transparent !important;
+  transform: rotate(-45deg);
+  list-style: none;
+  border-radius: 50%;
+  transition: transform 0.7s linear;
+}
+
+.rainbow__item:nth-child(1) {
+  border: 12px solid #fc0100;
+  width: 280px;
+  height: 280px;
+  transition-delay: 0.1s;
+}
+
+.rainbow__item:nth-child(2) {
+  border: 12px solid #ff9a36;
+  width: 260px;
+  height: 260px;
+  top: 10px;
+  left: 10px;
+  transition-delay: 0.2s;
+}
+
+.rainbow__item:nth-child(3) {
+  border: 12px solid #ffff65;
+  width: 240px;
+  height: 240px;
+  top: 20px;
+  left: 20px;
+  transition-delay: 0.3s;
+}
+
+.rainbow__item:nth-child(4) {
+  border: 12px solid #36cb31;
+  width: 220px;
+  height: 220px;
+  top: 30px;
+  left: 30px;
+  transition-delay: 0.4s;
+}
+
+.rainbow__item:nth-child(5) {
+  border: 12px solid #03ffff;
+  width: 200px;
+  height: 200px;
+  top: 40px;
+  left: 40px;
+  transition-delay: 0.5s;
+}
+
+.rainbow__item:nth-child(6) {
+  border: 12px solid #3465fc;
+  width: 180px;
+  height: 180px;
+  top: 50px;
+  left: 50px;
+  transition-delay: 0.6s;
+}
+
+.rainbow__item:nth-child(7) {
+  border: 10px solid #9a01fc;
+  width: 160px;
+  height: 160px;
+  top: 60px;
+  left: 60px;
+  transition-delay: 0.7s;
+}
+
+/*===================
+========= Стили для профиля ===========*/
+
+.header {
+  background: #4662ae;
+  width: 100%;
+  border-bottom: 3px solid #fff;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-min {
+  @include invincibleImg();
+}
+
+/*===================
+========= Стили для плеера ===========*/
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $anotherColor;
+  padding: 10px 0px;
+  width: 482px;
+
+  &__name {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+  }
+
+  &__box {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btn-play {
+    margin-right: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__btn {
+    padding: 8px 10px;
+    background: #2a2a38;
+    color: $mainColor;
+    border-radius: 10px;
+    font-size: 23px;
+    transition: background 0.3s linear;
+
+    &:hover {
+      background: lighten(#2a2a38, 12%);
+    }
+  }
+}
+
+/*===================
+========= Стили для аватарки ===========*/
+
+.user {
+  cursor: pointer;
+  display: flex;
+  padding: 5px 10px;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.3s linear;
+
+  &:hover {
+    background: $anotherColor;
+  }
+
+  &__box {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 8px;
+    @include invincibleImg();
+  }
+
+  &__pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__nick {
+    font-size: 20px;
+    user-select: none;
+    font-family: 'Russo One', -apple-system, system-ui, sans-serif;
+  }
+}
+
+/*===================
+========= Стили для главной секции ===========*/
+
+.main {
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.about {
+  padding: 23px 20px 0;
+  width: 480px;
+  height: 500px;
+  border-radius: 10px;
+  background: $anotherColor;
+  display: flex;
+  margin-top: 40px;
+  flex-direction: column;
+
+  &__box_title {
+    position: relative;
+  }
+
+  &__pen {
+    @include invincibleImg();
+    position: absolute;
+    right: 45px;
+    top: 8px;
+  }
+
+  &__name {
+    font-size: 36px;
+    border: none;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    width: 300px;
+    display: block;
+    color: $mainColor;
+    background: transparent;
+    position: relative;
+    transition: border-bottom 0.3s linear;
+    margin: 0 auto 30px;
+  }
+
+  &__holder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  &__comment {
+    cursor: auto;
+    box-shadow: $shadowInputs;
+    border-radius: 10px;
+    background: $colorProfile;
+    padding: 10px 5px 0 10px;
+    width: 300px;
+    height: 166px;
+    font-family: $mainFont;
+    resize: none;
+    color: $mainColor;
+    font-size: 16px;
+
+    &::placeholder {
+      color: #fff;
+      font-family: $mainFont;
+      font-size: 16px;
+    }
+  }
+
+  &__box_poster {
+    box-shadow: $shadowInputs;
+    display: block;
+    position: relative;
+    width: 120px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 2px dashed #fff;
+  }
+
+  & input::-webkit-file-upload-button,
+  &__text-poster,
+  &__picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  & input::-webkit-file-upload-button {
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__box:hover &__text-poster {
+    background: darken(#6b79c0, 8%);
+  }
+
+  &__text-poster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #6b79c0;
+    color: #fff;
+    transition: background 0.3s ease;
+  }
+
+  &__picture {
+    object-fit: cover;
+  }
+
+  &__btn {
+    margin-bottom: 25px;
+  }
+}
+
+/*===================
+========= Стили для рейтинга ===========*/
+
+.rating {
+  margin-bottom: 30px;
+
+  display: inline-flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+
+.rating__item {
+  user-select: none;
+  font-size: 40px;
+  color: #c1c1c1;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rating__item:hover,
+.rating__item:hover ~ .rating__item {
+  color: #fff;
+}
+
+.rating[data-total-value='1'] .rating__item:nth-child(n + 10),
+.rating[data-total-value='2'] .rating__item:nth-child(n + 9),
+.rating[data-total-value='3'] .rating__item:nth-child(n + 8),
+.rating[data-total-value='4'] .rating__item:nth-child(n + 7),
+.rating[data-total-value='5'] .rating__item:nth-child(n + 6) {
+  color: #ff0;
+}
+.rating[data-total-value='6'] .rating__item:nth-child(n + 5),
+.rating[data-total-value='7'] .rating__item:nth-child(n + 4),
+.rating[data-total-value='8'] .rating__item:nth-child(n + 3),
+.rating[data-total-value='9'] .rating__item:nth-child(n + 2),
+.rating[data-total-value='10'] .rating__item:nth-child(n + 1) {
+  color: #ffa500;
+}
+
+/*===================
+========= Стили для text rotator ===========*/
+
+.js-fade-in-verb {
+  animation: fade-it 0.7s ease forwards;
+}
+
+.verb {
+  visibility: visible;
+  color: $mainColor;
+}
+
+.about__advice {
+  user-select: none;
+  text-align: center;
+  color: #6b79c0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+@keyframes fade-it {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*===================
+========= Стили для списка на главной странице ===========*/
+
+.list {
+  background: $anotherColor;
+  height: 100%;
+  width: 550px;
+  padding: 63px 10px 150px 50px;
+
+  &__details {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-right: 40px;
+  }
+
+  &__helpers {
+    padding-top: 6px;
+    display: flex;
+  }
+
+  &__search {
+    position: relative;
+    width: 190px;
+    margin-right: 45px;
+  }
+
+  &__input {
+    background: #6b79c0;
+    border-radius: 10px;
+    padding: 5px 25px 5px 10px;
+    color: $mainColor;
+    font-size: 16px;
+
+    &::placeholder {
+      color: #fff;
+      font-family: $mainFont;
+      font-size: 16px;
+    }
+  }
+
+  &__loop {
+    position: absolute;
+    top: 4px;
+    right: -35px;
+    width: 18px;
+    @include invincibleImg();
+  }
+
+  .js-hide {
+    display: none;
+  }
+
+  &__btn {
+    width: 30px;
+    height: 30px;
+    background: $bgButton;
+    color: $mainColor;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 2px;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: darken($bgButton, 8%);
+    }
+  }
+
+  &__item {
+    width: 450px;
+    height: 50px;
+    background: #6b79c0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0px 0 10px;
+    margin-bottom: 20px;
+    transition: background 0.3s linear;
+    cursor: pointer;
+
+    &:hover {
+      background: darken(#6b79c0, 8%);
+    }
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
+
+  &__del {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: transparent;
+
+    & img {
+      transition: transform 0.3s linear;
+    }
+
+    & img:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__name {
+    font-size: 25px;
+    text-overflow: ellipsis;
+    width: 350px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__holder {
+    height: 400px;
+    overflow-y: auto;
+  }
+}
+
+/*===================
+========= Модальное окно (опции) ===========*/
+
+.js-popup-hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.popup {
+  transition: all 0.3s ease;
+
+  &__body {
+    position: relative;
+  }
+
+  &__wrap {
+    z-index: -1;
+  }
+
+  &__wrap {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    @include getCenter();
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  &__horn {
+    @include invincibleImg();
+    position: absolute;
+    z-index: -1;
+
+    &_left {
+      left: -40px;
+      top: -25px;
+      animation: hornMoveLeft 7s linear infinite;
+      transform-origin: right bottom;
+    }
+
+    &_right {
+      right: -40px;
+      top: -25px;
+      animation: hornMoveRight 6s linear infinite;
+      transform-origin: left bottom;
+    }
+
+    &_center {
+      left: calc(50% - 27px);
+      top: -45px;
+      animation: hornMoveCenter 5s linear infinite;
+      transform-origin: center bottom;
+    }
+  }
+
+  &__options {
+    width: 467px;
+    height: 238px;
+    background: $background;
+    color: $mainColor;
+    border-radius: 30px;
+    padding: 30px 0;
+    border: 4px solid #fff;
+  }
+
+  &__eye {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+    @include getCenter();
+    margin-bottom: 28px;
+    overflow: hidden;
+    border: 2px solid #fff;
+  }
+
+  &__eyeball {
+    background: #000;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: #7a6ed7;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4) inset;
+      animation: eyeBlink 2s ease-in-out 9s infinite;
+    }
+
+    &:before {
+      top: 0px;
+    }
+
+    &:after {
+      bottom: 0px;
+    }
+  }
+
+  @keyframes eyeBlink {
+    0%,
+    5%,
+    10%,
+    15%,
+    20%,
+    25%,
+    30%,
+    35%,
+    40%,
+    60%,
+    65%,
+    70%,
+    75%,
+    80%,
+    85%,
+    90%,
+    95%,
+    100% {
+      height: 0%;
+    }
+    45%,
+    50%,
+    55% {
+      height: 50%;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__file {
+    display: none;
+  }
+
+  &__label {
+    // background: red;
+    cursor: pointer;
+  }
+
+  &__item {
+    margin-bottom: 30px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s linear;
+
+    &:hover {
+      border-color: #fff;
+    }
+  }
+
+  &__item:last-child {
+    margin-bottom: 0px;
+  }
+
+  &__link {
+    color: #fff;
+    font-size: 33px;
+  }
+}
+
+@keyframes hornMoveRight {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(8deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes hornMoveLeft {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+  75% {
+    transform: rotate(-8deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes hornMoveCenter {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/*===================
+========= Модальное окно (подробности об аниме) ===========*/
+
+.popup {
+  &__content {
+    background: $background;
+    width: 900px;
+    height: 560px;
+    border-radius: 30px;
+    padding: 30px;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    font-size: 16px;
+    width: 490px;
+    line-height: 25px;
+    padding-right: 20px;
+    height: 300px;
+    overflow: auto;
+  }
+
+  &__grade {
+    display: block;
+    font-size: 20px;
+    line-height: 50px;
+    font-weight: 700;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #fff;
+    background: #6b79c0;
+  }
+
+  &__right {
+    border-radius: 20px;
+    position: relative;
+    background: red;
+    width: 268px;
+    height: 380px;
+    overflow: hidden;
+  }
+
+  &__poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include invincibleImg();
+    object-fit: cover;
+  }
+}
+
+/*===================
+========= Стили для профиля(фейк) ===========*/
+
+// .nav {
+//   background: rgba(8, 3, 67, 0.2);
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding: 20px;
+// }
+
+// .header__exit {
+//   color: #fff;
+// }
+
+// .logo-min {
+//   padding: 15px;
+//   color: #000;
+//   font-weight: bold;
+//   border-radius: 50%;
+//   background: #ddd;
+// }
+
+// .opinion__inner {
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+// .opinion__title {
+//   padding-top: 40px;
+// }
+
+// .opinion__form {
+//   width: 400px;
+//   height: 500px;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .opinion__text {
+//   widows: 400px;
+//   height: 100px;
+//   margin-bottom: 10px;
+// }
+
+// .opinion__input {
+//   padding: 10px;
+//   margin-bottom: 10px;
+//   border: none;
+// }
+
+// .opinion__list {
+//   padding: 0 20px;
+//   background: rgba(8, 3, 67, 0.2);
+//   width: 400px;
+//   height: 400px;
+//   overflow-y: scroll;
+// }
+
+// .opinion__item {
+//   border-radius: 10px;
+//   width: 100%;
+//   height: 40px;
+//   background: #ddd;
+//   color: #000;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-around;
+//   margin-bottom: 10px;
+// }
+
+// .opinion__grade {
+//   width: 30px;
+//   height: 30px;
+//   background: #000;
+//   color: #fff;
+//   border-radius: 50%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .opinion__delete {
+//   background: red;
+//   padding: 5px 10px;
+//   color: #fff;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }

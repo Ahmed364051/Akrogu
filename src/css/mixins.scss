@@ -1,0 +1,12 @@
+// Располошает по центру
+@mixin getCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Нельзя оказать какое-то действие на картинку
+@mixin invincibleImg() {
+  pointer-events: none;
+  user-select: none;
+}
